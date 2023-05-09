@@ -1,9 +1,9 @@
-const ActiveTodo = require("./model")
+const DoneTodo = require("./model")
 
-const addActiveTodo = async(req, res) => {
+const addDoneTodo = async(req, res) => {
     currentUserId = req.authUser.dataValues.id
 	try {
-		const todos = await ActiveTodo.create({
+		const todos = await DoneTodo.create({
 			todo: req.body.todo,
             UserId: currentUserId
 		})
@@ -16,9 +16,9 @@ const addActiveTodo = async(req, res) => {
 	}
 }
 
-const deleteActiveTodo = async (req, res) => {
+const deleteDoneTodo = async (req, res) => {
 	try {
-		const todos = await ActiveTodo.destroy({
+		const todos = await DoneTodo.destroy({
 			where: {
 				id: req.body.id,
 			}
@@ -36,4 +36,4 @@ const deleteActiveTodo = async (req, res) => {
 	}
 }
 
-module.exports = {addActiveTodo, deleteActiveTodo}
+module.exports = {addDoneTodo, deleteDoneTodo}
